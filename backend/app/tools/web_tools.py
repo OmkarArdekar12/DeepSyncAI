@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 from tavily import TavilyClient
+from langchain_core.tools import tool
 
 from app.core.config import TAVILY_API_KEY
 
 tavily = TavilyClient(api_key=TAVILY_API_KEY)
 
+@tool
 def web_search(query: str) -> str:
     """
     Search the web using Tavily and return formatted results.
@@ -27,6 +29,7 @@ def web_search(query: str) -> str:
     except Exception as e:
         return f"Error during web search: {str(e)}"
 
+@tool
 def scrape_url(url: str) -> str:
     """
     Scrape a webpage and return clean text content.

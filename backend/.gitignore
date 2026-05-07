@@ -15,3 +15,8 @@ htmlcov/
 dist/
 build/
 *.sqlite3
+
+# Commands
+# source venv/Scripts/activate
+# which python
+# python -m uvicorn app.main:app --reload
