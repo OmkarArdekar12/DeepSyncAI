@@ -73,7 +73,6 @@ Provide your critique in this exact Markdown format:
 
 ## Final Verdict
 (2-3 sentence final verdict on the quality, reliability, and usefulness of this research report)
-
 Be honest, specific, and constructive. Support your critique with evidence from the report, search data, and extracted content.`;
 
     const geminiResult = await model.generateContent(prompt);
