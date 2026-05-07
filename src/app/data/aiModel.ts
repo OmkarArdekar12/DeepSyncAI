@@ -1,4 +1,4 @@
-const modelVersion: number = 2;
+const modelVersion: number = 1;
 const models: string[] = [
   "gemini-2.5-flash",
   "gemini-3-flash-preview",
