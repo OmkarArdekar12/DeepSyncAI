@@ -69,6 +69,12 @@ export async function POST(req: NextRequest) {
       .map((s) => `### From: ${s.url}\n${s.content}`)
       .join("\n\n---\n\n");
 
+    const genai = new GoogleGenerativeAI(GEMINI_API_KEY);
+    const model = genai.getGenerativeModel({
+      model: models[modelVersion],
+      generationConfig: { temperature: 0 },
+    });
+
     const prompt = `
 You are an expert content extraction and analysis system.
 From the following scraped web pages, extract only the most relevant factual information.
