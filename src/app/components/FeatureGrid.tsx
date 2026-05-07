@@ -27,7 +27,7 @@ const FeatureGrid = () => {
                   {feature.title}
                 </h3>
               </div>
-              <p className="text-blue-300/70 text-sm leading-relaxed text-center">
+              <p className="text-blue-300/70 text-xs leading-relaxed text-center">
                 {feature.description}
               </p>
             </div>

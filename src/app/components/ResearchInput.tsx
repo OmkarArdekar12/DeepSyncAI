@@ -208,7 +208,7 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
             readOnly={loading}
             onChange={(e) => setTopic(e.target.value)}
             placeholder={
-              "Enter any topic you want to deeply research…\ne.g. The future of quantum computing, Climate change strategies, History of Rome"
+              "Enter any topic you want to deeply research...\ne.g. The future of quantum computing, Climate change strategies, History of India"
             }
             className={`w-full bg-black/60 text-blue-100 placeholder:text-blue-400/40 rounded-xl border border-blue-500/40 px-4 py-3 font-normal text-md leading-relaxed backdrop-blur-md focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 transition-all duration-200 ease-out resize-none overflow-y-auto deepsync-scrollbar ${loading ? "cursor-not-allowed opacity-70" : ""}`}
           />

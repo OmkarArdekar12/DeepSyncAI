@@ -1,18 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TbAtom } from "react-icons/tb";
+import Image from "next/image";
 
 const DeepSyncBrand = () => {
   return (
-    <div className="flex flex-wrap justify-center items-center gap-3 px-4">
+    <div className="flex flex-wrap justify-center items-center gap-2 px-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.85, rotate: -9 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/30"
+        className="flex items-center justify-center rounded-2xl"
       >
-        <TbAtom size={42} className="text-blue-400" />
+        <Image
+          src="/deepsyncai.png"
+          alt="DeepSyncAI Logo"
+          width={100}
+          height={100}
+          className="object-contain"
+        />
       </motion.div>
 
       <motion.span

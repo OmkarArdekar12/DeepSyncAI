@@ -16,7 +16,7 @@ const HistoryPanel = ({ history, onSelect }: HistoryPanelProps) => {
 
   return (
     <div className="w-full bg-black/50 backdrop-blur-xl rounded-2xl shadow-2xl border border-blue-600/95">
-      <div className="w-full flex flex-col items-start bg-black/50 p-6 border-b border-blue-600/95">
+      <div className="w-full flex flex-col items-start bg-black/50 p-6 border-b border-blue-600/95 rounded-t-2xl">
         <h2 className="text-xl font-semibold text-gray-200">Recent Research</h2>
         <p className="text-gray-400 text-sm mt-1">
           Your previous research sessions

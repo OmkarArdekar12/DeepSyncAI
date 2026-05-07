@@ -11,12 +11,21 @@ const Footer = () => {
       transition={{ duration: 0.6, ease: "easeOut", delay: 2 }}
       className="w-full px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm bg-black/70 border-t border-black/70 transition-all duration-100"
     >
-      <p className="text-blue-300/70 text-center md:text-left">
-        © {new Date().getFullYear()} DeepSyncAI. Powered by Gemini &amp; Tavily.
+      <p className="text-purple-300/70 text-center md:text-left">
+        &copy; {new Date().getFullYear()} DeepSyncAI. Created by{" "}
+        <a
+          href="https://github.com/OmkarArdekar12"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-300/70 hover:text-purple-300 hover:underline transition"
+        >
+          Omkar Ardekar
+        </a>
+        .
       </p>
       <div className="flex items-center gap-6">
         <a
-          href="https://github.com"
+          href="https://github.com/OmkarArdekar12"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -25,7 +34,7 @@ const Footer = () => {
           <FaGithub size={20} />
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/omkarardekar09"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"

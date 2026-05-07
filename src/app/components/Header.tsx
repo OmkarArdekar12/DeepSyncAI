@@ -11,7 +11,7 @@ const Header = () => {
         <DeepSyncBrand />
       </div>
       <TypewriterText
-        text="An intelligent multi-agent research engine — search, extract, report, and critique any topic powered by Gemini AI."
+        text="An intelligent multi-agent research engine that searches, extracts, analyzes, and critiques information to generate deep, structured insights on any topic."
         className="text-blue-300/80 text-lg max-w-2xl mx-auto"
         delay={6000}
         speed={30}

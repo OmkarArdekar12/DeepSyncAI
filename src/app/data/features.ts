@@ -8,25 +8,25 @@ const features: FeatureGrid[] = [
   {
     title: "Deep Web Search",
     description:
-      "Scans the web via Tavily to gather real-time URLs and content snippets on any topic.",
+      "Performs intelligent real-time web exploration to discover relevant sources, URLs, and insights on any research topic.",
     icon: LuGlobe,
   },
   {
     title: "Multi-Source Extraction",
     description:
-      "Scrapes and extracts rich, structured data from the top sources found during search.",
+      "Extracts and structures high-value information from multiple web sources to build a rich research context.",
     icon: MdDataExploration,
   },
   {
-    title: "AI Research Report",
+    title: "DeepSyncAI Research Report",
     description:
-      "Gemini synthesizes all gathered data into a comprehensive, well-structured research report.",
+      "Transforms gathered data into a comprehensive, well-structured, and insight-driven research report using advanced AI reasoning.",
     icon: TbReportSearch,
   },
   {
     title: "Intelligent Critique",
     description:
-      "AI-powered critic scores the report, highlights strengths and weaknesses with precision.",
+      "Analyzes the generated report with an AI-powered critic that evaluates accuracy, clarity, strengths, and improvement areas.",
     icon: GiArtificialIntelligence,
   },
 ];
