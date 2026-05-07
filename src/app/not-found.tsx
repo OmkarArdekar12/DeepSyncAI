@@ -10,7 +10,7 @@ export default function NotFound() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-7xl font-extrabold bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent"
+        className="text-7xl font-extrabold text-white bg-clip-text"
       >
         404
       </motion.h1>
@@ -41,7 +41,7 @@ export default function NotFound() {
       >
         <Link
           href="/"
-          className="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 transition font-semibold"
+          className="px-6 py-3 rounded-xl border border-1 border-purple-600 hover:border-black hover:underline transition font-semibold"
         >
           Back to DeepSyncAI
         </Link>
