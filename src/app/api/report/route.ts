@@ -41,7 +41,10 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join("\n\n");
 
-    console.log(combinedData);
+    // REPORT ROUTE
+    console.log(
+      `\n\n========== REPORT DATA ==========\n\nLength: ${combinedData.length}\n\nPreview:\n${combinedData.slice(0, 100)}\n\n`,
+    );
 
     const prompt = `
 You are an expert research writer. 

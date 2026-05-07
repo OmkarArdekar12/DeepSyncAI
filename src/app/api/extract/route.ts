@@ -69,7 +69,10 @@ export async function POST(req: NextRequest) {
       .map((s) => `### From: ${s.url}\n${s.content}`)
       .join("\n\n---\n\n");
 
-    console.log(combined);
+    // EXTRACT ROUTE
+    console.log(
+      `\n\n========== EXTRACT RESULT ==========\n\nLength: ${combined.length}\n\nPreview:\n${combined.slice(0, 100)}\n\n`,
+    );
 
     const genai = new GoogleGenerativeAI(GEMINI_API_KEY);
     const model = genai.getGenerativeModel({
