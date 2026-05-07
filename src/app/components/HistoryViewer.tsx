@@ -42,7 +42,6 @@ const HistoryViewer = ({ item, onClose }: HistoryViewerProps) => {
             <LuX size={22} />
           </button>
 
-          {/* Header */}
           <div className="p-6 border-b border-blue-600/50">
             <h3 className="flex items-center gap-2 text-xl font-semibold text-blue-300">
               <LuGlobe className="inline size-5" />
@@ -51,7 +50,6 @@ const HistoryViewer = ({ item, onClose }: HistoryViewerProps) => {
             <p className="text-xs text-gray-400 mt-1">{item.timestamp}</p>
           </div>
 
-          {/* 4 sections */}
           <div className="p-6 space-y-4 max-h-[72vh] overflow-y-auto deepsync-scrollbar">
             {SECTIONS.map(({ key, label, Icon }) => {
               const content = item.memory[key];
