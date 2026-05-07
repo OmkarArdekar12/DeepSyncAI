@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { modelVersion, models } from "@/app/data/aiModel";
 import * as cheerio from "cheerio";
 
 function extractUrls(text: string): string[] {
   const matches = text.match(/https?:\/\/[^\s\)\"\']+/g) ?? [];
-  // deduplicate and limit to top 3
   return [...new Set(matches)].slice(0, 3);
 }
 
@@ -17,7 +17,7 @@ async function scrapeUrl(url: string): Promise<string> {
   const $ = cheerio.load(html);
   $("script, style, nav, footer, header, aside, iframe").remove();
   const text = $("body").text().replace(/\s+/g, " ").trim();
-  return text.slice(0, 2500);
+  return text.slice(0, 8000);
 }
 
 export async function POST(req: NextRequest) {
@@ -45,39 +45,59 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Scrape each URL
-    const scraped: { url: string; content: string }[] = [];
-    for (const url of urls) {
-      try {
-        const content = await scrapeUrl(url);
-        scraped.push({ url, content });
-      } catch {
-        scraped.push({ url, content: `[Could not scrape: ${url}]` });
-      }
-    }
+    // const scraped: { url: string; content: string }[] = [];
+    // for (const url of urls) {
+    //   try {
+    //     const content = await scrapeUrl(url);
+    //     scraped.push({ url, content });
+    //   } catch {
+    //     scraped.push({ url, content: `[Could not scrape: ${url}]` });
+    //   }
+    // }
+    const scraped = await Promise.all(
+      urls.map(async (url) => {
+        try {
+          const content = await scrapeUrl(url);
+          return { url, content };
+        } catch {
+          return { url, content: `[Could not scrape: ${url}]` };
+        }
+      }),
+    );
 
     const combined = scraped
       .map((s) => `### From: ${s.url}\n${s.content}`)
       .join("\n\n---\n\n");
 
-    // Gemini extraction
+    console.log(combined);
+
     const genai = new GoogleGenerativeAI(GEMINI_API_KEY);
     const model = genai.getGenerativeModel({
-      model: "gemini-3-flash-preview",
+      model: models[modelVersion],
       generationConfig: { temperature: 0 },
     });
 
-    const prompt = `You are a content extraction expert. From the following scraped web pages, extract the most relevant, detailed, and structured information.
+    const prompt = `
+You are an expert content extraction and analysis system.
+From the following scraped web pages, extract only the most relevant factual information.
+
+Instructions:
+- Ignore advertisements, navigation menus, cookie notices, footers, and unrelated content
+- Preserve important facts, statistics, dates, names, and technical details
+- Keep the information concise but detailed
+- Do not hallucinate or invent information
+- Organize the output clearly in Markdown
 
 For each source:
 1. State the URL
-2. Extract the most important facts, data, and insights
-3. Organize information in structured bullet points or sections
+2. Provide a short overview
+3. Extract the key facts and insights in bullet points
+4. Include important numbers, statistics, and claims if available
 
 Scraped Content:
 ${combined}
 
-Format your extraction clearly in Markdown with sections per source:`;
+Return the final extraction in well-structured Markdown.`;
 
     const geminiResult = await model.generateContent(prompt);
     const result = geminiResult.response.text();
