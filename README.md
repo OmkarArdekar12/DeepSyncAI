@@ -19,13 +19,13 @@
 
 ## DeepSyncAI - Intelligent Multi-Agent Research Engine
 
-### DeepSyncAI is an intelligent multi-agent research engine that autonomously searches the web, extracts relevant information from live sources, generates comprehensive research reports, and performs AI-powered critique — all from a single topic input.
+### DeepSyncAI is an intelligent multi-agent research engine that autonomously searches the web, extracts relevant information from live sources, generates comprehensive research reports, and performs AI-powered critique, all from a single topic input.
 
-### Designed with a modern agentic architecture, DeepSyncAI orchestrates a sequential four-stage research pipeline consisting of a real-time search agent, a deep extraction agent, an AI report generation agent, and an intelligent critic agent. The platform delivers structured Markdown outputs through a sleek four-tab interface with smooth animations, typewriter-style rendering, session history tracking, and a production-grade glassmorphism UI — creating a fast, interactive, and research-focused AI experience.
+### Designed with a modern agentic architecture, DeepSyncAI orchestrates a sequential four-stage research pipeline consisting of a real-time search agent, a deep extraction agent, an AI report generation agent, and an intelligent critic agent. The platform delivers structured Markdown outputs through a sleek four-tab interface with smooth animations, typewriter-style rendering, session history tracking, and a production-grade glassmorphism UI, creating a fast, interactive, and research-focused AI experience.
 
 <h2>
-<a href="https://deepsync-ai.vercel.app/" target="_blank" rel="noopener noreferrer">
-<img src="./public/deepsyncai.png" width="30" alt="DeepSyncAI Logo" valign="middle" />&nbsp;DeepSyncAI Live: https://deepsync-ai.vercel.app
+<a href="https://deepsyncai.vercel.app/" target="_blank" rel="noopener noreferrer">
+<img src="./public/deepsyncai.png" width="30" alt="DeepSyncAI Logo" valign="middle" />&nbsp;DeepSyncAI Live: https://deepsyncai.vercel.app
 </a>
 </h2>
 
