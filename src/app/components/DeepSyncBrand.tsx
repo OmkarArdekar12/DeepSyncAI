@@ -21,8 +21,11 @@ const DeepSyncBrand = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
-        <span className="text-white">DeepSync</span>
-        <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        <span className="text-white">Deep</span>
+        <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-violet-500 bg-clip-text text-transparent">
+          Sync
+        </span>
+        <span className="bg-gradient-to-r from-white via-cyan-400 to-blue-500 bg-clip-text text-transparent">
           AI
         </span>
       </motion.span>
