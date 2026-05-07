@@ -54,23 +54,17 @@ const HistoryPanel = ({ history, onSelect }: HistoryPanelProps) => {
                 </div>
                 <div className="w-full flex flex-col space-y-2 pl-1">
                   <div className="w-full">
-                    <p className="text-xs font-medium text-gray-300 mb-1">
-                      Topic
-                    </p>
                     <p className="text-sm text-gray-200 whitespace-pre-wrap leading-relaxed font-semibold">
-                      {formatContent(item.topic, 60)}
+                      Topic:{" "}
+                      {formatContent(item.topic, 60)
+                        .split(" ")
+                        .map(
+                          (word) =>
+                            word.charAt(0).toUpperCase() + word.slice(1),
+                        )
+                        .join(" ")}
                     </p>
                   </div>
-                  {item.memory.report && (
-                    <div className="w-full">
-                      <p className="text-xs font-medium text-gray-300 mb-1">
-                        Report Preview
-                      </p>
-                      <p className="text-sm text-gray-400 whitespace-pre-wrap leading-relaxed">
-                        {formatContent(item.memory.report, 90)}
-                      </p>
-                    </div>
-                  )}
                 </div>
               </div>
             ))}
