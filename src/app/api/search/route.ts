@@ -45,11 +45,6 @@ export async function POST(req: NextRequest) {
       )
       .join("\n\n---\n\n");
 
-    // SEARCH ROUTE
-    console.log(
-      `\n\n========== SEARCH RESULT ==========\n\nLength: ${rawResults.length}\n\nPreview:\n${rawResults.slice(0, 100)}\n\n`,
-    );
-
     const genai = new GoogleGenerativeAI(GEMINI_API_KEY);
     const model = genai.getGenerativeModel({
       model: models[modelVersion],
