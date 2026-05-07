@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
 
     const prompt = `
 You are an accurate, expert research critic.
+Give higher scores as the report effectively incorporates accurate and up-to-date extracted data.
 Critically evaluate the following research report based on the supporting search data and extracted content.
 
 Topic: ${topic}
