@@ -13,7 +13,7 @@ export function useHistory() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) setHistory(JSON.parse(stored));
     } catch {
-      // ignore parse errors
+      //ignore parse errors
     }
   }, []);
 

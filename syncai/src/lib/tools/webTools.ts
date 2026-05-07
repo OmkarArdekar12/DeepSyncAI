@@ -13,6 +13,7 @@ export async function tavilySearch(query: string): Promise<string> {
   if (!res.ok) throw new Error(`Tavily API error: ${res.statusText}`);
 
   const data = await res.json();
+  console.log(data);
   const results: { title: string; url: string; content: string }[] =
     data.results ?? [];
 

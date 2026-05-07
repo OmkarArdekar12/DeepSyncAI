@@ -82,7 +82,7 @@ export function useResearch() {
             setState((s) => ({ ...s, status: "error", error: event.message }));
           }
         } catch {
-          // skip malformed SSE lines
+          //skip malformed SSE lines
         }
       }
     }
