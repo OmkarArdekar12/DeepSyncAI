@@ -2,15 +2,17 @@
 
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { LuSearch, LuLoader } from "react-icons/lu";
 import {
-  LuGlobe,
-  LuDatabase,
-  LuFileText,
-  LuStar,
-  LuSearch,
-  LuCircle,
-  LuLoader,
-} from "react-icons/lu";
+  RiSearch2Line,
+  RiSearch2Fill,
+  RiDatabase2Line,
+  RiDatabase2Fill,
+  RiFileTextLine,
+  RiFileTextFill,
+  RiShieldCheckLine,
+  RiShieldCheckFill,
+} from "react-icons/ri";
 import { RingLoader } from "react-spinners";
 import { AnimatePresence, motion } from "framer-motion";
 import { MemoryState } from "../types";
@@ -28,27 +30,37 @@ const STEPS: {
   label: string;
   badge: string;
   Icon: React.ElementType;
+  ActiveIcon: React.ElementType;
 }[] = [
   {
     key: "search",
     label: "Search Results",
-    badge: "Tavily Web Search",
-    Icon: LuGlobe,
+    badge: "DeepSyncAI Search Engine",
+    Icon: RiSearch2Line,
+    ActiveIcon: RiSearch2Fill,
   },
   {
     key: "extract",
     label: "Extracted Content",
-    badge: "URL Scraper",
-    Icon: LuDatabase,
+    badge: "DeepSyncAI Extractor",
+    Icon: RiDatabase2Line,
+    ActiveIcon: RiDatabase2Fill,
   },
   {
     key: "report",
     label: "Research Report",
-    badge: "Gemini AI",
-    Icon: LuFileText,
+    badge: "DeepSyncAI Research Engine",
+    Icon: RiFileTextLine,
+    ActiveIcon: RiFileTextFill,
   },
-  { key: "critic", label: "Critic Analysis", badge: "Gemini AI", Icon: LuStar },
-];
+  {
+    key: "critic",
+    label: "Critic Analysis",
+    badge: "DeepSyncAI Critic Engine",
+    Icon: RiShieldCheckLine,
+    ActiveIcon: RiShieldCheckFill,
+  },
+] as const;
 
 const ResearchInput = ({ onComplete }: ResearchInputProps) => {
   const [topic, setTopic] = useState<string>("");
@@ -86,7 +98,9 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
     try {
       //Search
       setCurrentStep("search");
-      toast.success("Searching the web with Tavily...", { id: "step-search" });
+      toast.success("Searching the web with DeepSyncAI...", {
+        id: "step-search",
+      });
       const searchRes = await fetch("/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -150,11 +164,19 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
 
       setHasResult(true);
       setCurrentStep(null);
-      toast.success("Research complete!", { id: "step-done" });
+      toast.success("DeepSyncAI research completed successfully!", {
+        id: "step-done",
+      });
       onComplete(topic, m);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Research failed";
-      toast.error(msg, { id: "research-error" });
+      // toast.error(msg, { id: "research-error" });
+      toast.error(
+        "Something went wrong while processing your research request. Please try again.",
+        {
+          id: "research-error",
+        },
+      );
     } finally {
       setLoading(false);
       setCurrentStep(null);
@@ -222,7 +244,7 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
             className="w-full mt-2"
           >
             <div className="w-full flex flex-wrap items-end gap-1 border-b border-blue-600/60 bg-black/30 backdrop-blur-md rounded-t-xl px-2 pt-2">
-              {STEPS.map(({ key, label, Icon }) => {
+              {STEPS.map(({ key, label, Icon, ActiveIcon }) => {
                 const isDone = !!memory[key];
                 const isRunning = currentStep === key;
                 const isActive = activeTab === key;
@@ -238,7 +260,7 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
                       transition-all duration-200 select-none
                       ${
                         isActive && isDone
-                          ? "bg-gradient-to-r from-blue-600/95 via-cyan-600/80 to-blue-500/95 text-white shadow-lg shadow-blue-500/20 cursor-pointer"
+                          ? "bg-purple-500/10 border border-purple-400/40 border-b-0 text-white shadow-lg shadow-purple-500/10 cursor-pointer"
                           : isDone
                             ? "text-blue-300 hover:text-white hover:bg-blue-700/30 cursor-pointer"
                             : isRunning
@@ -259,20 +281,17 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
                       >
                         <LuLoader size={15} className="text-blue-400" />
                       </motion.span>
-                    ) : isDone ? (
-                      <LuCircle
-                        size={15}
-                        className={isActive ? "text-white" : "text-blue-400"}
-                      />
+                    ) : isActive ? (
+                      <ActiveIcon size={17} className="text-white" />
                     ) : (
-                      <Icon size={15} />
+                      <Icon size={17} className="text-purple-300" />
                     )}
                     <span>{label}</span>
 
                     {isActive && isDone && (
                       <motion.span
                         layoutId="tab-underline"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/50 rounded-full"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-purple-600/60 rounded-full"
                       />
                     )}
                   </button>
@@ -280,7 +299,7 @@ const ResearchInput = ({ onComplete }: ResearchInputProps) => {
               })}
             </div>
 
-            <div className="w-full bg-black/40 backdrop-blur-md rounded-b-xl border border-t-0 border-blue-600/40 min-h-40">
+            <div className="w-full bg-black/40 backdrop-blur-md rounded-b-xl min-h-40">
               <AnimatePresence mode="wait">
                 {STEPS.map(({ key, label, badge }) => {
                   const shouldType = !typedSteps.has(key);
