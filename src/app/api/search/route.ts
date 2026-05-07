@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { modelVersion, models } from "@/app/data/aiModel";
 
 export async function POST(req: NextRequest) {
   try {
     const { topic } = await req.json();
+
     if (!topic?.trim()) {
       return NextResponse.json({ error: "Topic is required" }, { status: 400 });
     }
@@ -17,7 +19,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Call Tavily
     const tavilyRes = await fetch("https://api.tavily.com/search", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +38,6 @@ export async function POST(req: NextRequest) {
     const results: { title: string; url: string; content: string }[] =
       tavilyData.results ?? [];
 
-    // Format raw results
     const rawResults = results
       .map(
         (r, i) =>
@@ -45,14 +45,17 @@ export async function POST(req: NextRequest) {
       )
       .join("\n\n---\n\n");
 
-    // Gemini synthesis
+    console.log(rawResults);
+
     const genai = new GoogleGenerativeAI(GEMINI_API_KEY);
     const model = genai.getGenerativeModel({
-      model: "gemini-3-flash-preview",
+      model: models[modelVersion],
       generationConfig: { temperature: 0 },
     });
 
-    const prompt = `You are a research assistant. Synthesize the following web search results about "${topic}" into a clear, organized summary.
+    const prompt = `
+You are a research assistant. 
+Synthesize the following web search results about "${topic}" into a clear, organized summary.
 
 For each source, include:
 - The title and URL (as a clickable markdown link)
