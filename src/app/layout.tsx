@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description:
     "DeepSyncAI is an intelligent multi-agent research engine that autonomously searches the web, extracts information from live sources, generates structured research reports, and performs AI-powered critique.",
 
+  verification: {
+    google: "cIpfNdHkzMpM_Wpuo6JXHOkMH_wEpHyrgBe_f46e5Ig",
+  },
+
   keywords: [
     "DeepSyncAI",
     "AI Research Engine",
