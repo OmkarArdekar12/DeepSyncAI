@@ -29,20 +29,18 @@
 </a>
 </h2>
 
-<!--
 <h2>
-<a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noopener noreferrer">
+<a href="https://www.youtube.com/watch?v=JHcGgl_jXcs" target="_blank" rel="noopener noreferrer">
 <p>📽️ DeepSyncAI Preview Video - Click here to watch the full video on YouTube
 </p>
 </a>
 <p>
-<img src="./public/deepsyncaiGIF.gif" alt="DeepSyncAI Video GIF" width="95%"/>
+<img src="./public/deepsyncai.gif" alt="DeepSyncAI Video GIF" width="95%"/>
 </p>
 </h2>
--->
 
 <!-- <h2 id="seo-result">
-<a href="https://www.google.com/search?q=site:deepsync-ai.vercel.app" target="_blank" rel="noopener noreferrer">
+<a href="https://www.google.com/search?q=site:deepsyncai.vercel.app" target="_blank" rel="noopener noreferrer">
 <p>🔍 SEO Result - Click here to see</p>
 </a>
 </h2> -->
