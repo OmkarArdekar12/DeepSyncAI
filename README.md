@@ -39,11 +39,11 @@
 </p>
 </h2>
 
-<!-- <h2 id="seo-result">
+<h2 id="seo-result">
 <a href="https://www.google.com/search?q=site:deepsyncai.vercel.app" target="_blank" rel="noopener noreferrer">
 <p>🔍 SEO Result - Click here to see</p>
 </a>
-</h2> -->
+</h2>
 
 ## ✨ Core Features
 
