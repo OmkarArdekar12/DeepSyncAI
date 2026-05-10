@@ -43,6 +43,9 @@
 <a href="https://www.google.com/search?q=site:deepsyncai.vercel.app" target="_blank" rel="noopener noreferrer">
 <p>🔍 SEO Result - Click here to see</p>
 </a>
+<p>
+<img src="./public/seoresults.png" alt="DeepSyncAI SEO Validation" width="95%"/>
+</p>
 </h2>
 
 ## ✨ Core Features
