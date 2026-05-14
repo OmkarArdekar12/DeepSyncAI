@@ -2,6 +2,8 @@
 
 <div>
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/RAG-1F2937?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/LLM-4285F4?style=for-the-badge&logo=google&logoColor=white" />
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-0F172A?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8" />
@@ -19,9 +21,9 @@
 
 ## DeepSyncAI - Intelligent Multi-Agent Research Engine
 
-### DeepSyncAI is an intelligent multi-agent research engine that autonomously searches the web, extracts relevant information from live sources, generates comprehensive research reports, and performs AI-powered critique, all from a single topic input.
+### DeepSyncAI is an intelligent multi-agent Web RAG research engine that autonomously searches the web, extracts relevant information from live sources, generates comprehensive LLM-powered research reports, and performs AI-driven critique, all from a single topic input.
 
-### Designed with a modern agentic architecture, DeepSyncAI orchestrates a sequential four-stage research pipeline consisting of a real-time search agent, a deep extraction agent, an AI report generation agent, and an intelligent critic agent. The platform delivers structured Markdown outputs through a sleek four-tab interface with smooth animations, typewriter-style rendering, session history tracking, and a production-grade glassmorphism UI, creating a fast, interactive, and research-focused AI experience.
+### Designed with a modern agentic RAG architecture, DeepSyncAI orchestrates a sequential four-stage pipeline consisting of a real-time search agent, a deep extraction agent, an AI report generation agent, and an intelligent LLM critic agent. The platform delivers structured Markdown outputs through a sleek four-tab interface with smooth animations, typewriter-style rendering, session history tracking, and a production-grade glassmorphism UI, creating a fast, interactive, and research-focused AI experience.
 
 <h2>
 <a href="https://deepsyncai.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -51,6 +53,8 @@
 ## ✨ Core Features
 
 - **Multi-Agent Research Pipeline (Search &rarr; Extract &rarr; Report &rarr; Critic)**
+- **RAG (Retrieval-Augmented Generation) Architecture**
+- **LLM-Powered Report Generation & Critique (Gemini)**
 - **Tavily-Powered Real-Time Web Search**
 - **Deep Structured Content Extraction from Live Web Sources**
 - **Gemini AI Research Report Generation**
@@ -69,22 +73,24 @@
 
 ## 💻 Technologies Used
 
-| **Technology**                    | Category                   | Purpose                                                              |
-| --------------------------------- | -------------------------- | -------------------------------------------------------------------- |
-| **Next.js (App Router)**          | Frontend Framework         | Full-stack React framework for routing, SSR, and API handling        |
-| **React 19**                      | UI Library                 | Component-based user interface development                           |
-| **Next.js API Routes**            | Backend APIs               | Secure server-side agent orchestration and AI request handling       |
-| **Tailwind CSS 4**                | Styling and Responsiveness | Utility-first styling with a modern, responsive design system        |
-| **Framer Motion**                 | Animations                 | Smooth, performant UI animations, tab transitions, and micro-effects |
-| **React Markdown**                | Markdown Rendering         | Structured rendering of AI-generated research output                 |
-| **Remark GFM**                    | Markdown Extensions        | GitHub-Flavored Markdown support (tables, lists, code blocks)        |
-| **React Hot Toast**               | Notifications              | Real-time per-step toast notifications and user feedback             |
-| **Google Generative AI (Gemini)** | AI Integration             | Report generation, content synthesis, and intelligent critique       |
-| **Tavily API**                    | Web Search                 | Real-time web search with URL and content retrieval                  |
-| **Cheerio**                       | Web Scraping               | Server-side HTML parsing and content extraction from live URLs       |
-| **TypeScript**                    | Type Safety                | Static typing and a safer, maintainable codebase                     |
-| **React Icons**                   | Icons                      | Consistent, scalable icon system                                     |
-| **Vercel**                        | Deployment & Hosting       | Fast, global deployment with optimized performance                   |
+| **Technology**                           | Category                   | Purpose                                                                     |
+| ---------------------------------------- | -------------------------- | --------------------------------------------------------------------------- |
+| **Next.js (App Router)**                 | Frontend Framework         | Full-stack React framework for routing, SSR, and API handling               |
+| **LLM (Large Language Model)**           | AI Concept                 | Gemini used as the core reasoning engine for report and critique generation |
+| **RAG (Retrieval-Augmented Generation)** | AI Architecture            | Retrieved web data injected as context into Gemini before generation        |
+| **React 19**                             | UI Library                 | Component-based user interface development                                  |
+| **Next.js API Routes**                   | Backend APIs               | Secure server-side agent orchestration and AI request handling              |
+| **Tailwind CSS 4**                       | Styling and Responsiveness | Utility-first styling with a modern, responsive design system               |
+| **Framer Motion**                        | Animations                 | Smooth, performant UI animations, tab transitions, and micro-effects        |
+| **React Markdown**                       | Markdown Rendering         | Structured rendering of AI-generated research output                        |
+| **Remark GFM**                           | Markdown Extensions        | GitHub-Flavored Markdown support (tables, lists, code blocks)               |
+| **React Hot Toast**                      | Notifications              | Real-time per-step toast notifications and user feedback                    |
+| **Google Generative AI (Gemini)**        | AI Integration             | Report generation, content synthesis, and intelligent critique              |
+| **Tavily API**                           | Web Search                 | Real-time web search with URL and content retrieval                         |
+| **Cheerio**                              | Web Scraping               | Server-side HTML parsing and content extraction from live URLs              |
+| **TypeScript**                           | Type Safety                | Static typing and a safer, maintainable codebase                            |
+| **React Icons**                          | Icons                      | Consistent, scalable icon system                                            |
+| **Vercel**                               | Deployment & Hosting       | Fast, global deployment with optimized performance                          |
 
 ## 🔁 Multi-Agent Research Pipeline
 
@@ -93,22 +99,22 @@ User Input (Topic)
         │
         ▼
  ┌─────────────┐
- │   Search    │  Tavily API: fetches URLs + content snippets
+ │   Search    │  Tavily API: fetches URLs + content snippets  [Retrieval]
  └──────┬──────┘
         │
         ▼
  ┌─────────────┐
- │   Extract   │  Cheerio: scrapes full content from top URLs
+ │   Extract   │  Cheerio: scrapes full content from top URLs  [Retrieval]
  └──────┬──────┘
         │
         ▼
  ┌─────────────┐
- │   Report    │  Gemini AI: synthesizes a structured research report
+ │   Report    │  Gemini LLM: synthesizes report grounded on retrieved context  [RAG + LLM]
  └──────┬──────┘
         │
         ▼
  ┌─────────────┐
- │   Critic    │  Gemini AI: scores report, lists strengths & weaknesses
+ │   Critic    │  Gemini LLM: scores report, lists strengths & weaknesses  [RAG + LLM]
  └─────────────┘
 ```
 
